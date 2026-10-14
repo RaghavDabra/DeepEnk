@@ -16,3 +16,30 @@ MakeMyTrip and a dozen others, comparing prices and offers by hand. DeepEnk
 collapses that into a single query: it understands *what* you want, searches
 *everywhere* that can supply it, and hands back a decision instead of a list of
 tabs.
+
+## Features
+
+- **Natural-language intent extraction** — parses category, budget, features and
+  domain (shopping / food / rides / travel / hospitality) from a free-text query.
+- **Multi-platform fan-out search** — queries Amazon, Flipkart, Myntra, Swiggy,
+  Zomato, Uber, Ola, MakeMyTrip, OYO and more in parallel via RapidAPI, with a
+  scraper fallback.
+- **GPT-4 reasoning layer** — generates "best overall" and "best value" picks,
+  comparison insights, sentiment analysis and coupon validation.
+- **Price-drop prediction & watch** — monitors tracked items and pushes real-time
+  alerts over WebSocket (Socket.IO) when a target price is hit.
+- **Universal checkout** — one-click redirection to the winning provider with
+  offers pre-applied, plus click-through analytics.
+- **Caching & auth** — in-memory TTL cache (NodeCache) in front of external APIs,
+  Google OAuth 2.0 + JWT sessions, and MongoDB-backed search/click history.
+
+## Architecture
+
+DeepEnk is a React / React Native frontend over an Express + Socket.IO backend,
+with an "Intelligence Core" (SearchEngine, AIService, ProductService) sitting
+between the API gateway and the external provider ecosystem. State lives in
+MongoDB (users, searches, clicks) with a NodeCache layer for hot results.
+
+A full set of diagrams — request sequence, component graph, data flow, auth flow,
+database ERD, price-drop state machine, route map and the WebSocket event flow —
+is maintained in [`deepenk-diagrams.md`](./deepenk-diagrams.md).
