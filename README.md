@@ -43,3 +43,53 @@ MongoDB (users, searches, clicks) with a NodeCache layer for hot results.
 A full set of diagrams — request sequence, component graph, data flow, auth flow,
 database ERD, price-drop state machine, route map and the WebSocket event flow —
 is maintained in [`deepenk-diagrams.md`](./deepenk-diagrams.md).
+
+## Tech stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React.js (SPA), React Native |
+| Backend | Node.js, Express, Socket.IO |
+| AI | OpenAI GPT-4 (summaries, comparison, sentiment, prediction) |
+| Data | MongoDB, NodeCache (TTL cache), Supabase (auth/profiles) |
+| Auth | Google OAuth 2.0 (Passport.js), JWT (HS256, 7-day expiry) |
+| Integrations | RapidAPI connectors for Amazon, Flipkart, Myntra, Swiggy, Zomato, Uber, Ola, MakeMyTrip, OYO, ONDC |
+
+## Getting started
+
+### Prerequisites
+
+- Node.js 18+ and npm
+- A MongoDB connection string
+- API keys: OpenAI, RapidAPI, Google OAuth client ID/secret
+
+### Setup
+
+```bash
+# 1. clone
+git clone https://github.com/RaghavDabra/DeepEnk.git
+cd DeepEnk
+
+# 2. install dependencies
+npm install
+
+# 3. configure environment
+cp .env.example .env     # then fill in the values below
+
+# 4. run
+npm run dev              # starts the Express + Socket.IO server
+```
+
+### Environment variables
+
+```env
+MONGODB_URI=
+OPENAI_API_KEY=
+RAPIDAPI_KEY=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+JWT_SECRET=
+```
+
+> Exact scripts and variable names may vary with the current source layout — check
+> `package.json` and `.env.example` in the repository root.
