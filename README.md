@@ -93,3 +93,11 @@ JWT_SECRET=
 
 > Exact scripts and variable names may vary with the current source layout — check
 > `package.json` and `.env.example` in the repository root.
+
+## License
+
+Released under the [MIT License](./LICENSE).
+
+## Author
+
+Built by [Raghav Dabra](https://github.com/RaghavDabra).
